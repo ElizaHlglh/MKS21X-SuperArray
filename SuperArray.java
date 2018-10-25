@@ -4,17 +4,12 @@ public class SuperArray {
 
   public SuperArray(){
     data = new String[10];
-    size = 10;
-  }
-
-  public SuperArray(String[] x){
-    data = x;
-    size = data.length;
+    size = 0;
   }
 
   public void clear(){
     size = 0;
-    data = new String[size];
+    data = new String[10];
   }
 
   public int size() {
@@ -26,15 +21,17 @@ public class SuperArray {
   }
 
   public boolean add(String value) {
-    if (size() == 0) {
+    if (size() < data.length) {
       size++;
-      data = new String[size];
-    }
-    for (int i=0; i < data.length; i++) {
-      if (data[i] == null) {
-        data[i] = value;
-        return true;
+      for (int i=0; i < data.length; i++) {
+        if (data[i] == null) {
+          data[i] = value;
+          return true;
+        }
       }
+    }
+    else {
+      resize();
     }
     return false;
   }
@@ -87,5 +84,55 @@ public class SuperArray {
     }
   }
 
+  private void resize() {
+    String[] extended = new String[size()*2];
+    for (int i = 0; i < data.length; i++) {
+      extended[i] = data[i];
+    }
+    data = extended;
+  }
+
+  public boolean contain(String target) {
+    for (int i = 0; i < data.length; i++) {
+      if (data[i].equals(target)) return true;
+    }
+    return false;
+  }
+
+  public int indexOf(String target) {
+    for (int i = 0; i < data.length; i++) {
+      if (data[i].equals(target)) return i;
+    }
+    return -1;
+  }
+
+  public int lastIndexOf(String target) {
+    for (int i = data.length - 1; i >= 0; i--) {
+      if (data[i].equals(target)) return i;
+    }
+    return -1;
+  }
+
+  public void add(int index, String word) {
+    boolean pass = false;
+    String[] w = new String[data.length + 1];
+    if (index < 0 || index > size()) {
+      System.out.print("Error, index out of range");
+    }
+    else {
+      for (int i = 0; i <= data.length; i++) {
+        if (pass) {
+          w[i] = data[i-1];
+        }
+        if (i == index) {
+          w[i] = word;
+          pass = true;
+        }
+        else {
+          w[i] = data[i];
+        }
+      }
+    }
+  }
 
 }
