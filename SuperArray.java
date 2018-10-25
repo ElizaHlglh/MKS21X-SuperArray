@@ -142,7 +142,19 @@ public class SuperArray {
   }
 
   public String remove(int index) {
-    return "in Progress";
+    String[] w  = new String[data.length - 1];
+    boolean pass = false;
+    String removed = data[index];
+    for (int i = 0; i < w.length; i++) {
+      if (i == index) {
+        w[i] = data[i+1];
+        pass = true;
+      }
+      else {
+        w[i] = data[i];
+      }
+    }
+    return removed;
   }
 
 }
