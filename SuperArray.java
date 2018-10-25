@@ -91,7 +91,7 @@ public class SuperArray {
   }
 
   private void resize() {
-    String[] extended = new String[size()*2];
+    String[] extended = new String[size()*2+1];
     for (int i = 0; i < data.length; i++) {
       extended[i] = data[i];
     }
@@ -142,7 +142,7 @@ public class SuperArray {
   }
 
   public String remove(int index) {
-    return "not done yet";
+    return "in Progress";
   }
 
 }
