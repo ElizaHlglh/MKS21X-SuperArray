@@ -43,12 +43,13 @@ public class SuperArray {
     String ans = "[";
     for (int i = 0; i < size(); i++) {
       if (i == size() - 1) {
-        ans += data[i] + "]";
+        ans += data[i];
       }
       else {
         ans += data[i] + ",";
       }
     }
+    ans += "]";
     return ans;
   }
 
