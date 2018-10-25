@@ -74,6 +74,9 @@ public class SuperArray {
   }
 
   public String set(int index, String value) {
+    if (value.equals(null)) {
+      return "can't set null to array.";
+    }
     if (index < 0 || index >= size()) {
       return null;
     }
