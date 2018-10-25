@@ -41,15 +41,14 @@ public class SuperArray {
 
   public String toString() {
     String ans = "[";
-    for (int i = 0; i < data.length; i++) {
-      if (data[i] != null && i != data.length-1) {
+    for (int i = 0; i < size(); i++) {
+      if (i == size() - 1) {
+        ans += data[i] + "]";
+      }
+      else {
         ans += data[i] + ",";
       }
-      else if (data[i] != null && i == data.length-1) {
-        ans += data[i];
-      }
     }
-    ans += "]";
     return ans;
   }
 
@@ -139,6 +138,10 @@ public class SuperArray {
         }
       }
     }
+  }
+
+  public String remove(int index) {
+    return "not done yet";
   }
 
 }
