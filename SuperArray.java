@@ -21,6 +21,9 @@ public class SuperArray {
   }
 
   public boolean add(String value) {
+    if (value.equals(null)) {
+      return false;
+    }
     if (size() < data.length) {
       size++;
       for (int i=0; i < data.length; i++) {
