@@ -172,6 +172,7 @@ public class SuperArray {
           w[i] = data[i];
         }
       }
+      size--;
     }
     return pass;
   }
