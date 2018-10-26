@@ -1,92 +1,151 @@
-public class driver{
-	public static void main(String[] args){
-		SuperArray a = new SuperArray();
-		/*Phase 1 testing*/
-		System.out.println("-----Testing Phase 1-----");
+public class driver {
 
-		//Testing SuperArray initializing
-		System.out.println("\n---Initializing SuperArray---");
-		System.out.println("Testing toString(): should return []");
-		System.out.println(a);
-		System.out.println("\nTesting toStringDebug(): should return [null (x10)]");
-		System.out.println(a.toStringDebug());
+  public static void main(String[] args) {
+    SuperArray SA = new SuperArray();
 
-		//testing size()
-		System.out.println("\n\n---Testing size()---");
-		System.out.println("Testing size(): should return 0");
-		System.out.println(a.size());
+    System.out.println("SA: " + SA);
+    // []
+    System.out.println("isEmpty?: " + SA.isEmpty());                 // true
 
-		//testing add()
-		System.out.println("\n\n---Testing add()---");
-		System.out.println("Testing add() while empty: should return true");
-		System.out.println(a.add("apple"));
-		System.out.println("\nChecking add() and toString(): should return [apple]");
-		System.out.println(a);
-		a.add("banana");
-		System.out.println("\nChecking add() and toString(): should return [apple, banana]");
-		System.out.println(a);
-		for (int x = 0; x < 9; x++){
-			a.add("blank");
-		}
-		System.out.println("\n---Testing toStringDebug() again: should print [apple, banana, blank (x8)]---");
-		System.out.println(a.toStringDebug());
-		System.out.println("\n\n---Testing add() while full: should return false---");
-		System.out.println(a.add("full"));
+    System.out.println();
 
-		//testing clear()
-		System.out.println("\n\n---Testing clear()---");
-		System.out.println("Testing clear(): should return []");
-		a.clear();
-		System.out.println(a);
-		System.out.println("\n\n---Testing clear(): Should print [apple, banana, null (x8)]---");
-		System.out.println(a.toStringDebug());
-		System.out.println("\n---Testing clear() and size(): should return 0---");
-		System.out.println(a.size());
-		System.out.println("\n---Testing add(\"boop\") after clear(): should return true---");
-		System.out.println(a.add("boop"));
-		System.out.println("\n---Should print [boop]---");
-		System.out.println(a);
-		a.clear();
+    SA.add("A"); System.out.println("SA.add(\"A\")");                // no output
+    System.out.println("isEmpty?: " + SA.isEmpty());                 // false
 
-		//testing get()
-		System.out.println("\n\n-----Testing get()-----");
-		System.out.println("---Testing get() while empty: should return null---");
-		System.out.println(a.get(0));
-		a.add("burp");
-		a.add("ahem");
-		a.add("coughdrop");
-		System.out.println("\n---Testing get() with indices 0-2 filled: should return values burp, ahem, coughdrop---");
-		System.out.println(a.get(0));
-		System.out.println(a.get(1));
-		System.out.println(a.get(2));
-		System.out.println("\n---Testing get() for out of bounds: should return null---");
-		System.out.println(a.get(-1));
-		System.out.println(a.get(10));
+    System.out.println();
 
-		//testing set()
-		System.out.println("\n\n-----Testing set()-----");
-		System.out.println("---Using SuperArray from testing get()---");
-		System.out.println(a);
-		System.out.println("\n---Testing set(0, \"blue\"): should return burp---");
-		System.out.println(a.set(0, "blue"));
-		System.out.println("-Should print [blue, ahem, coughdrop]-");
-		System.out.println(a);
-		System.out.println("\n---Testing set(1, \"fish\"): should return ahem---");
-		System.out.println(a.set(1, "fish"));
-		System.out.println("-Should print [blue, fish, coughdrop]-");
-		System.out.println(a);
-		System.out.println("\n---Testing set(2, \"syrup\"): should return syrup---");
-		System.out.println(a.set(2, "syrup"));
-		System.out.println("-Should print [blue, fish, syrup]-");
-		System.out.println(a);
-		System.out.println("\n\n---Testing the error: using indices that are outside of the domain. Both should return null and print an error message---");
-		System.out.println(a.set(-2, "I'm not to be seen"));
-		System.out.println(a.set(100, "I'm not supposed to be here..."));
-		System.out.println("\n---Using cleared SuperArray---");
-		a.clear();
-		System.out.println("\n---Testing set(2, \"rock\"): should return null and an error message---");
-		System.out.println(a.set(2, "rock"));
-		System.out.println("-Should print []-");
-		System.out.println(a);
-	}
+    SA.add("B"); System.out.println("SA.add(\"B\")");                // no output
+    SA.add("C"); System.out.println("SA.add(\"C\")");                // no output
+    System.out.println("size: " + SA.size());                        // 3
+    System.out.println("SA: " + SA.toStringDebug());
+    // [A, B, C, null, null, null, null, null, null, null]
+
+    System.out.println();
+
+    System.out.println("SA.remove(0): " + SA.remove(0));             // "A"
+    System.out.println("size: " + SA.size());                        // 2
+    System.out.println("SA: " + SA);
+    // [B, C]
+
+    System.out.println();
+
+    System.out.println("SA.get(1): " + SA.get(1));                   // "C"
+    System.out.print("SA.get(15): ");
+    if(SA.get(15) == null) { System.out.println("index error"); }    // "index error"
+    System.out.print("SA.get(-2): ");
+    if(SA.get(-1) == null) { System.out.println("index error"); }    // "index error"
+
+    System.out.println();
+
+    System.out.println("SA.set(0,\"I'm\"): " + SA.set(0,"I'm"));     // "B"
+    System.out.println("SA: " + SA);
+    // [I'm, C]
+
+    System.out.println();
+
+    System.out.print("SA.set(15, \"J\"): ");
+    if(SA.get(15) == null) { System.out.println("index error"); }    // "index error"
+    System.out.print("SA.get(-2, \"J\"): ");
+    if(SA.get(-1) == null) { System.out.println("index error"); }    // "index error"
+
+    System.out.println("SA: " + SA);
+    // [I'm, C]
+    System.out.println("size: " + SA.size());                        // 2
+
+    System.out.println();
+
+    System.out.println("contains \"D\"?): " + SA.contain("D"));     // false
+    System.out.println("contains \"C\"?): " + SA.contain("C"));     // true
+
+    System.out.println();
+
+    SA.add(15,"C"); System.out.println("SA.add(15,\"C\")");          // "index error"
+    SA.add(-2,"C"); System.out.println("SA.add(-2,\"C\")");          // "index error"
+    SA.add(1,"C"); System.out.println("SA.add(1,\"C\")");            // no output
+    System.out.println("SA: " + SA);
+    // [I'm, C, C]
+
+    System.out.println();
+
+    SA.add(1,"sorry"); System.out.println("SA.add(1,\"sorry\")");    // no output
+    System.out.println("SA: " + SA);
+    // [I'm, sorry, C, C]
+    System.out.println("size: " + SA.size());                        // 4
+
+    System.out.println();
+
+    System.out.println("SA.indexOf(\"C\"): " + SA.indexOf("C"));     // 2
+    System.out.print("SA.lastIndexOf(\"C\"): ");
+    System.out.println(SA.lastIndexOf("C"));                         // 3
+
+    System.out.println();
+
+    System.out.println("SA.indexOf(\"D\"): " + SA.indexOf("D"));     // -1
+    System.out.print("SA.lastIndexOf(\"D\"): ");
+    System.out.println(SA.lastIndexOf("D"));                         // -1
+
+    System.out.println();
+
+    System.out.println("SA.remove(15): " + SA.remove(15));           // index error
+    System.out.println("SA.remove(-2): " + SA.remove(-2));           // index error
+    System.out.println("SA.remove(2): " + SA.remove(2));             // "C"
+    System.out.println("SA: " + SA);
+    // [I'm, sorry, C]
+    System.out.println("SA: " + SA.toStringDebug());
+    // [I'm, sorry, C, null, null, null, null, null, null, null, null]
+
+    System.out.println();
+
+    System.out.print("SA.remove(\"D\"): ");
+    if(SA.remove("D")) {
+      System.out.println("element succesfully removed");
+    } else {
+      System.out.println("element not found");
+    }
+
+    System.out.print("SA.remove(\"C\"): ");
+    if(SA.remove("C")) {
+      System.out.println("element succesfully removed");
+    } else {
+      System.out.println("element not found");
+    }
+
+    System.out.println("SA: " + SA);
+    // [I'm, sorry]
+    System.out.println("SA: " + SA.toStringDebug());
+    // [I'm, sorry, null, null, null, null, null, null, null, null, null]
+
+    System.out.println();
+
+    SA.add("Dave"); System.out.println("SA.add(\"Dave\")");          // no output
+    SA.add("I'm"); System.out.println("SA.add(\"I'm\")");            // no output
+    SA.add("afraid"); System.out.println("SA.add(\"afraid\")");      // no output
+    SA.add("I"); System.out.println("SA.add(\"I\")");                // no output
+    SA.add("can't"); System.out.println("SA.add(\"can't\")");        // no output
+    SA.add("let"); System.out.println("SA.add(\"let\")");            // no output
+    SA.add("you"); System.out.println("SA.add(\"you\")");            // no output
+
+    System.out.println();
+
+    System.out.println("size: " + SA.size());                        // 9
+    System.out.println("SA: " + SA);
+    // [I'm, sorry, Dave, I'm, afraid, I, can't, let, you]
+    System.out.println("SA: " + SA.toStringDebug());
+    // [I'm, sorry, Dave, I'm, afraid, I, can't, let, you, null]
+
+    System.out.println();
+
+    SA.add("do"); System.out.println("SA.add(\"do\")");              // no output
+    SA.add("that"); System.out.println("SA.add(\"that\")");          // no output
+
+    System.out.println();
+
+    System.out.println("size: " + SA.size());                        // 11
+    System.out.println("SA: " + SA);
+    // [I'm, sorry, Dave, I'm, afraid, I, can't, let, you, do, that]
+    System.out.println("SA: " + SA.toStringDebug());
+    // [I'm, sorry, Dave, I'm, afraid, I, can't, let, you, do, that, null, null, null, null, null, null, null, null, null]
+
+  }
+
 }
