@@ -127,10 +127,7 @@ public class SuperArray {
   public void add(int index, String word) {
     boolean pass = false;
     String[] w = new String[data.length + 1];
-    if (index < 0 || index > size()) {
-      System.out.print("Error, index out of range");
-    }
-    else {
+    try {
       for (int i = 0; i <= data.length; i++) {
         if (pass) {
           w[i] = data[i-1];
@@ -144,6 +141,9 @@ public class SuperArray {
         }
       }
       size++;
+    }
+    catch(ArrayIndexOutOfBoundsException e) {
+      System.out.print("Error, index out of range");
     }
   }
 
