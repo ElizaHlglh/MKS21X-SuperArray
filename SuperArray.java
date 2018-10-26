@@ -147,7 +147,7 @@ public class SuperArray {
     boolean pass = false;
     String removed = data[index];
     for (int i = 0; i < w.length; i++) {
-      if (i == index) {
+      if (i == index || pass) {
         w[i] = data[i+1];
         pass = true;
       }
@@ -161,7 +161,15 @@ public class SuperArray {
 
   public boolean remove(String target) {
     String[] w = new String[data.length - 1];
+    boolean pass = false;
+    if (contain(target)) {
+      for (int i = 0; i < w.length; i++) {
 
+      }
+    }
+    else {
+      return pass;
+    }
   }
 
 }
