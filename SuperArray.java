@@ -73,25 +73,30 @@ public class SuperArray {
   }
 
   public String get(int index) {
-    if (index < 0 || index >= size()) {
-      return null;
-    }
-    else {
+    try {
       return data[index];
+    }
+    catch(ArrayIndexOutOfBoundsException e) {
+      return "Error, index out of range";
     }
   }
 
   public String set(int index, String value) {
-    if (value.equals(null)) {
-      return "can't set null to array.";
+    try {
+      if (value.equals(null)) {
+        return "can't set null to array.";
+      }
+      if (index < 0 || index >= size()) {
+        return null;
+      }
+      else {
+        String old = data[index];
+        data[index] = value;
+        return old;
+      }
     }
-    if (index < 0 || index >= size()) {
-      return null;
-    }
-    else {
-      String old = data[index];
-      data[index] = value;
-      return old;
+    catch(ArrayIndexOutOfBoundsException e) {
+      return "Error, index out of range";
     }
   }
 
