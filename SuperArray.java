@@ -164,12 +164,16 @@ public class SuperArray {
     boolean pass = false;
     if (contain(target)) {
       for (int i = 0; i < w.length; i++) {
-
+        if (data[i].equals(target) || pass) {
+          w[i] = data[i+1];
+          pass = true;
+        }
+        else {
+          w[i] = data[i];
+        }
       }
     }
-    else {
-      return pass;
-    }
+    return pass;
   }
 
 }
