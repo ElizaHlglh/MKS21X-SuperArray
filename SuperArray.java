@@ -138,6 +138,7 @@ public class SuperArray {
           w[i] = data[i];
         }
       }
+      size++;
     }
   }
 
@@ -154,10 +155,12 @@ public class SuperArray {
         w[i] = data[i];
       }
     }
+    size = size - 1;
     return removed;
   }
 
-  public boolean remove(String word) {
+  public boolean remove(String target) {
+    String[] w = new String[data.length - 1];
 
   }
 
