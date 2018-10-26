@@ -157,4 +157,8 @@ public class SuperArray {
     return removed;
   }
 
+  public boolean remove(String word) {
+
+  }
+
 }
