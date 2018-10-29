@@ -86,9 +86,6 @@ public class SuperArray {
       if (value.equals(null)) {
         return "can't set null to array.";
       }
-      if (index < 0 || index >= size()) {
-        return null;
-      }
       else {
         String old = data[index];
         data[index] = value;
@@ -123,7 +120,7 @@ public class SuperArray {
   }
 
   public int lastIndexOf(String target) {
-    for (int i = data.length - 1; i >= 0; i--) {
+    for (int i = size() - 1; i >= 0; i--) {
       if (data[i].equals(target)) return i;
     }
     return -1;
