@@ -158,7 +158,7 @@ public class SuperArray {
     boolean pass = false;
     try {
       String removed = data[index];
-      for (int i = 0; i < w.length; i++) {
+      for (int i = 0; i < size(); i++) {
         if (i == index || pass) {
           w[i] = data[i+1];
           pass = true;
@@ -168,6 +168,7 @@ public class SuperArray {
         }
       }
       size = size - 1;
+      data = w;
       return removed;
     }
     catch(ArrayIndexOutOfBoundsException e) {
@@ -179,7 +180,7 @@ public class SuperArray {
     String[] w = new String[data.length - 1];
     boolean pass = false;
     if (contains(target)) {
-      for (int i = 0; i < w.length; i++) {
+      for (int i = 0; i < size(); i++) {
         if (data[i].equals(target) || pass) {
           w[i] = data[i+1];
           pass = true;
@@ -189,6 +190,7 @@ public class SuperArray {
         }
       }
       size--;
+      data = w;
     }
     return pass;
   }
