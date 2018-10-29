@@ -108,8 +108,8 @@ public class SuperArray {
     data = extended;
   }
 
-  public boolean contain(String target) {
-    for (int i = 0; i < data.length; i++) {
+  public boolean contains(String target) {
+    for (int i = 0; i < size(); i++) {
       if (data[i].equals(target)) return true;
     }
     return false;
@@ -130,14 +130,14 @@ public class SuperArray {
   }
 
   public void add(int index, String word) {
-    boolean pass = false;
-    String[] w = new String[data.length + 1];
     try {
+      boolean pass = false;
+      String[] w = new String[data.length + 1];
       for (int i = 0; i <= data.length; i++) {
         if (pass) {
           w[i] = data[i-1];
         }
-        if (i == index) {
+        else if (i == index) {
           w[i] = word;
           pass = true;
         }
@@ -146,8 +146,9 @@ public class SuperArray {
         }
       }
       size++;
+      data = w;
     }
-    catch(ArrayIndexOutOfBoundsException e) {
+    catch(IndexOutOfBoundsException e) {
       System.out.print("Error, index out of range");
     }
   }
@@ -177,7 +178,7 @@ public class SuperArray {
   public boolean remove(String target) {
     String[] w = new String[data.length - 1];
     boolean pass = false;
-    if (contain(target)) {
+    if (contains(target)) {
       for (int i = 0; i < w.length; i++) {
         if (data[i].equals(target) || pass) {
           w[i] = data[i+1];
