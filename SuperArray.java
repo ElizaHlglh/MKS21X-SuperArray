@@ -8,8 +8,13 @@ public class SuperArray {
   }
 
   public SuperArray(int startingCapacity){
-    data = new String[startingCapacity];
-    size = 0;
+    if (startingCapacity < 0) {
+      throw new IllegalArgumentException("Array length can't be " + startingCapacity);
+    }
+    else {
+      data = new String[startingCapacity];
+      size = 0;
+    }
   }
 
   public void clear(){
@@ -40,8 +45,9 @@ public class SuperArray {
     }
     else {
       resize();
+      this.add(value);
     }
-    return false;
+    return true;
   }
 
   public String toString() {
@@ -151,9 +157,9 @@ public class SuperArray {
   }
 
   public String remove(int index) {
-    String[] w  = new String[data.length - 1];
-    boolean pass = false;
     try {
+      String[] w  = new String[data.length - 1];
+      boolean pass = false;
       String removed = data[index];
       for (int i = 0; i < size(); i++) {
         if (i == index || pass) {

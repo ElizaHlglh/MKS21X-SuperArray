@@ -85,6 +85,9 @@ public class driver {
     SA.clear();
     System.out.println(SA.toString());
 
+    System.out.println("Testing new constructor's throw (should return error message): ");
+    SuperArray SA1 = new SuperArray(-2);
+
   }
   catch(IndexOutOfBoundsException e) {
     System.out.println("Caught a problem in the main");
