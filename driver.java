@@ -1,7 +1,6 @@
 public class driver {
   public static void main(String[] args) {
 
-    try {
     System.out.print("\n\n\n\n");
 
     /**************************************************************************/
@@ -88,10 +87,8 @@ public class driver {
     System.out.println("Testing new constructor's throw (should return error message): ");
     SuperArray SA1 = new SuperArray(-2);
 
-  }
-  catch(IndexOutOfBoundsException e) {
-    System.out.println("Caught a problem in the main");
+    System.out.println("Testing get's catch(should give an error): ");
+    System.out.println(SA.get(-2));
 
-  }
   }
 }

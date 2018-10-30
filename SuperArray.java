@@ -11,10 +11,13 @@ public class SuperArray {
     if (startingCapacity < 0) {
       throw new IllegalArgumentException("Array length can't be " + startingCapacity);
     }
-    else {
-      data = new String[startingCapacity];
-      size = 0;
-    }
+      try {
+        data = new String[startingCapacity];
+        size = 0;
+      }
+      catch(IllegalArgumentException e){
+        System.out.print("Please redo with a new capacity");
+      }
   }
 
   public void clear(){
